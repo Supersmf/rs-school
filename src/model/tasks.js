@@ -3,11 +3,11 @@ import mongoose, { Schema } from 'mongoose';
 const taskSchema = new Schema(
   {
     title: String,
-    order: String,
+    order: Number,
     description: String,
     userId: String,
     boardId: String,
-    columnId: String,
+    columnId: String
   },
   {
     writeConcern: {

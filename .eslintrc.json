@@ -307,7 +307,13 @@
             2,
             7
         ],
-        "no-bitwise": 2
+        "no-bitwise": 2,
+        "node/no-unsupported-features/es-syntax": [
+            "error",
+            {
+              "ignores": ["modules"]
+            }
+          ]
     },
     "globals": {
         "$": true,
@@ -330,6 +336,5 @@
                 ]
             }
         }
-    ],
-    "node/no-unsupported-features": 0
+    ]   
 }

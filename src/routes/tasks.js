@@ -4,10 +4,10 @@ import tasks from '../controller/tasks';
 const router = new Router();
 
 router
-  .get('/tasks', tasks.read)
-  .get('/tasks/:id', tasks.readOne)
-  .post('/tasks', tasks.create)
-  .put('/tasks/:id', tasks.update)
-  .delete('/tasks/:id', tasks.remove);
+  .get('/boards/:boardId/tasks', tasks.read)
+  .get('/boards/:boardId/tasks/:id', tasks.readOne)
+  .post('/boards/:boardId/tasks', tasks.create)
+  .put('/boards/:boardId/tasks/:id', tasks.update)
+  .delete('/boards/:boardId/tasks/:id', tasks.remove);
 
 export default router;

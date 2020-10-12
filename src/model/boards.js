@@ -2,9 +2,8 @@ import mongoose, { Schema } from 'mongoose';
 
 const boardSchema = new Schema(
   {
-    // _id: mongoose.ObjectId,
     title: String,
-    columns: String,
+    columns: Object
   },
   {
     writeConcern: {

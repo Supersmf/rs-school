@@ -1,5 +1,5 @@
-import mongoose, { Schema } from 'mongoose';
 import Boards from '../model/boards';
+import Tasks from '../model/tasks';
 
 const getAllBoards = async () => {
   try {
@@ -9,7 +9,7 @@ const getAllBoards = async () => {
   }
 };
 
-const getBoard = async (id) => {
+const getBoard = async id => {
   try {
     return await Boards.findById(id);
   } catch (err) {
@@ -27,15 +27,20 @@ const createBoard = async data => {
 
 const updateBoard = async (id, data) => {
   try {
-    return await Boards.findOneAndUpdate({_id: id}, {$set:data}, { "new": true});
+    return await Boards.findOneAndUpdate(
+      { _id: id },
+      { $set: data },
+      { new: true }
+    );
   } catch (err) {
     throw new Error(err);
   }
 };
 
-const deleteBoard = async (id, data) => {
+const deleteBoard = async id => {
   try {
-    return await Boards.findOneAndDelete({_id: id});
+    await Tasks.deleteMany({ boardId: id });
+    return await Boards.findOneAndDelete({ _id: id });
   } catch (err) {
     throw new Error(err);
   }
@@ -46,6 +51,5 @@ module.exports = {
   getBoard,
   createBoard,
   updateBoard,
-  deleteBoard,
+  deleteBoard
 };
-

@@ -1,15 +1,14 @@
-import mongoose, { Schema } from 'mongoose';
 import Tasks from '../model/tasks';
 
-const getAllTasks = async () => {
+const getAllTasks = async params => {
   try {
-    return await Tasks.find();
+    return await Tasks.find(params);
   } catch (err) {
     throw new Error(err);
   }
 };
 
-const getTask = async (id) => {
+const getTask = async id => {
   try {
     return await Tasks.findById(id);
   } catch (err) {
@@ -27,15 +26,19 @@ const createTask = async data => {
 
 const updateTask = async (id, data) => {
   try {
-    return await Tasks.findOneAndUpdate({_id: id}, {$set:data}, { "new": true});
+    return await Tasks.findOneAndUpdate(
+      { _id: id },
+      { $set: data },
+      { new: true }
+    );
   } catch (err) {
     throw new Error(err);
   }
 };
 
-const deleteTask = async (id, data) => {
+const deleteTask = async (boardId, id) => {
   try {
-    return await Tasks.findOneAndDelete({_id: id});
+    return await Tasks.findOneAndDelete({ _id: id });
   } catch (err) {
     throw new Error(err);
   }
@@ -46,6 +49,5 @@ module.exports = {
   getTask,
   createTask,
   updateTask,
-  deleteTask,
+  deleteTask
 };
-
