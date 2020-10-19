@@ -1,5 +1,5 @@
-import Boards from '../model/boards';
-import Tasks from '../model/tasks';
+import Boards from '../models/boards';
+import Tasks from '../models/tasks';
 
 const getAllBoards = async () => {
   try {

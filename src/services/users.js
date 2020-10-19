@@ -1,5 +1,5 @@
-import Users from '../model/users';
-import Tasks from '../model/tasks';
+import Users from '../models/users';
+import Tasks from '../models/tasks';
 
 const getAllUsers = async () => {
   try {

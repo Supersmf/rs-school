@@ -1,4 +1,4 @@
-import Tasks from '../model/tasks';
+import Tasks from '../models/tasks';
 
 const getAllTasks = async params => {
   try {
