@@ -1,3 +1,4 @@
+import bcrypt from 'bcrypt';
 import users from '../services/users';
 
 const read = async (request, response) => {
@@ -22,7 +23,12 @@ const readOne = async (request, response) => {
 
 const create = async (request, response) => {
   try {
-    const { _id: id, name, login } = await users.createUser(await request.body);
+    const password = await bcrypt.hash(request.body.password, 10);
+
+    const { _id: id, name, login } = await users.createUser({
+      ...request.body,
+      password
+    });
     response.json({ id, name, login });
   } catch (err) {
     response.json(err);
